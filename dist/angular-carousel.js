@@ -354,6 +354,7 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                                 goToSlide(destination / containerWidth);
                             }
                         }
+                        scope.$emit('carouselScrolled', carousel, move);
                     }
 
                     function capIndex(idx) {
