@@ -335,6 +335,7 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                         } else {
                             carousel[0].style[transformProperty] = 'translate3d(' + move + 'px, 0, 0)';
                         }
+                        scope.$emit('carouselScrolled', carousel, move);
                     }
 
                     function autoScroll() {
@@ -354,7 +355,6 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                                 goToSlide(destination / containerWidth);
                             }
                         }
-                        scope.$emit('carouselScrolled', carousel, move);
                     }
 
                     function capIndex(idx) {
