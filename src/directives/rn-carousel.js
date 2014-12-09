@@ -436,21 +436,21 @@
 
                     var is3dAvailable = detect3dSupport();
 
-                    function onOrientationChange() {
-                        updateContainerWidth();
-                        goToSlide();
-                    }
-
-                    // handle orientation change
-                    var winEl = angular.element($window);
-                    winEl.bind('orientationchange', onOrientationChange);
-                    winEl.bind('resize', onOrientationChange);
-
-                    scope.$on('$destroy', function() {
-                        $document.unbind('mouseup', documentMouseUpEvent);
-                        winEl.unbind('orientationchange', onOrientationChange);
-                        winEl.unbind('resize', onOrientationChange);
-                    });
+//                    function onOrientationChange() {
+//                        updateContainerWidth();
+//                        goToSlide();
+//                    }
+//
+//                    // handle orientation change
+//                    var winEl = angular.element($window);
+//                    winEl.bind('orientationchange', onOrientationChange);
+//                    winEl.bind('resize', onOrientationChange);
+//
+//                    scope.$on('$destroy', function() {
+//                        $document.unbind('mouseup', documentMouseUpEvent);
+//                        winEl.unbind('orientationchange', onOrientationChange);
+//                        winEl.unbind('resize', onOrientationChange);
+//                    });
 
                 };
             }
