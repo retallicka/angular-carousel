@@ -354,7 +354,7 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                             });
 
                             var c = (x/100) * getContainerWidth();
-                            scope.$emit('carouselScrolled', getSlidesDOMParent(), c);
+                            scope.$emit('carouselScrolled', getSlidesDOM(), c);
                         }
 
                         scope.nextSlide = function(slideOptions) {
