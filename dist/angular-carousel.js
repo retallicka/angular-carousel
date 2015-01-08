@@ -336,14 +336,6 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                             return iElement[0].querySelectorAll('ul[rn-carousel] > li');
                         }
 
-                        function documentMouseUpEvent(event) {
-                            // in case we click outside the carousel, trigger a fake swipeEnd
-                            swipeMoved = true;
-                            swipeEnd({
-                                x: event.clientX,
-                                y: event.clientY
-                            }, event);
-                        }
 
                         function updateSlidesPosition(offset) {
                             // manually apply transformation to carousel childrens
@@ -427,7 +419,6 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
 
                         function swipeStart(coords, event) {
                             // console.log('swipeStart', coords, event);
-                            $document.bind('mouseup', documentMouseUpEvent);
                             updateContainerWidth();
                             elX = iElement[0].querySelector('li').getBoundingClientRect().left;
                             pressed = true;
@@ -557,7 +548,6 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                                 return;
                             }
 
-                            $document.unbind('mouseup', documentMouseUpEvent);
                             pressed = false;
                             swipeMoved = false;
                             destination = startX - coords.x;
@@ -594,10 +584,6 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                             }
 
                         }
-
-                        scope.$on('$destroy', function() {
-                            $document.unbind('mouseup', documentMouseUpEvent);
-                        });
 
                         scope.carouselBufferIndex = 0;
                         scope.carouselBufferSize = options.bufferSize;
