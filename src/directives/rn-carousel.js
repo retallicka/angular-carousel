@@ -247,6 +247,8 @@
                             angular.forEach(getSlidesDOM(), function(child, index) {
                                 child.style.cssText = createStyleString(computeCarouselSlideStyle(index, x, options.transitionType));
                             });
+                            var c = (x/100) * getContainerWidth();
+                            scope.$emit('carouselScrolled', getSlidesDOM(), c);
                         }
 
                         scope.nextSlide = function(slideOptions) {
@@ -571,22 +573,6 @@
                                 }, 0, false);
                             }
                         }
-
-                        function onOrientationChange() {
-                            updateContainerWidth();
-                            goToSlide();
-                        }
-
-                        // handle orientation change
-                        var winEl = angular.element($window);
-                        winEl.bind('orientationchange', onOrientationChange);
-                        winEl.bind('resize', onOrientationChange);
-
-                        scope.$on('$destroy', function() {
-                            unbindMouseUpEvent();
-                            winEl.unbind('orientationchange', onOrientationChange);
-                            winEl.unbind('resize', onOrientationChange);
-                        });
                     };
                 }
             };
